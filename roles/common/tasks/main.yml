@@ -1,0 +1,9 @@
+---  
+- name:   Install Required packages
+  apt: name={{ item }} state=installed
+  with_items:
+    - bzr
+    - slapd
+    - ldap-utils
+    - phpldapadmin
+

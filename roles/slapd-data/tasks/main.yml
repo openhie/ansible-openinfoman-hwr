@@ -1,0 +1,22 @@
+---  
+- name: Stop slapd
+  service: name=slapd state=stopped
+
+- name: Load ldap base organizational units
+  command: slapadd -l /opt/rhea-pr/ldap/base_organizational_units.ldif  
+  ignore_errors: yes
+
+- name: Copy admin pwd ldif
+  copy: src=admin_pass.ldif dest=/opt/rhea-pr/ldap/ owner=openldap group=openldap force=yes
+
+- name: Load ldap user data
+  command: slapadd -l /opt/rhea-pr/ldap/admin_pass.ldif
+  ignore_errors: yes
+
+- name: Load sample iHRIS data
+  command: slapadd -l /opt/rhea-pr/ldap/ihris_sample_export.ldif
+  ignore_errors: yes
+
+- name: Start slapd
+  service: name=slapd state=started
+

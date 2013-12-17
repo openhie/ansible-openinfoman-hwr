@@ -1,0 +1,44 @@
+---
+# Playbook for setting up a freshly imaged server
+
+- hosts: all
+
+  tasks: 
+   
+   - name:   Install EPEL Repo
+     get_url:   dest=/tmp/epel.rpm force=yes url="http://www.gtlib.gatech.edu/pub/fedora-epel/6/i386/epel-release-6-8.noarch.rpm"
+     
+   - name: Install Repo RPM  
+     yum:    name=/tmp/epel.rpm state=present disable_gpg_check=yes
+     tags:   epel yum
+   
+#   - name:   Update All Packages
+#     yum:   name=* state=latest
+#     tags:   update yum
+#    
+   - name:   Install sudo
+     yum:   name=sudo state=present
+     tags:   sudo yum
+   
+   - name:   copy sudoers file
+     copy:   src=templates/sudoers.in dest=/etc/sudoers backup=yes validate='visudo -cf %s'
+     tags:   sudo template
+   
+   - name:   Add user ryan
+     user:   name=ryan state=present append=yes generate_ssh_key=yes groups=wheel shell=/bin/bash ssh_key_bits=4096
+     
+   - name: Lock password
+     command:   /usr/bin/passwd -l ryan
+     tags:   user
+   
+   - name:   SSH Authorized Key
+     authorized_key:   user=ryan state=present key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+     tags:   ssh
+
+   - name:  Install Essential tools
+     yum: name={{ item }} state=installed
+     with_items:
+       - screen
+       - vim
+       - wget
+     tags: yum

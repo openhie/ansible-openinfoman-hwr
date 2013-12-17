@@ -1,0 +1,38 @@
+---  
+- name: Start slapd
+  service: name=slapd state=started
+
+- name:  get pr bzr 
+  bzr: dest=/opt/rhea-pr name=lp:rhea-pr
+
+- name: Stop slapd
+  service: name=slapd state=stopped
+
+- name: Copy provider.schema
+  command: cp /opt/rhea-pr/ldap/provider.schema /etc/ldap/schema
+
+- name: Set permissions for provider.schema
+  file: path=/etc/ldap/schema/provider.schema mode=0644 owner=root group=root
+
+- name: Copy slapd.conf
+  command: cp /opt/rhea-pr/ldap/slapd.conf /etc/ldap/slapd.conf
+
+- name: Set permissions for slapd.conf
+  file: path=/etc/ldap/slapd.conf mode=0644 owner=openldap group=openldap
+
+- name: Create slapd.d backup
+  shell: rm -r /etc/ldap/slapd.d
+  ignore_errors: yes
+
+- name: Create new slapd.d directory
+  file: path=/etc/ldap/slapd.d state=directory recurse=yes mode=0755 owner=openldap group=openldap
+
+- name: slaptest new conf
+  shell: slaptest -f /etc/ldap/slapd.conf -F /etc/ldap/slapd.d
+
+- name: Set permissions on slapd.d directory
+  file: path=/etc/ldap/slapd.d state=directory recurse=yes mode=0755 owner=openldap group=openldap
+
+- name: Start slapd and enable at boot
+  service: name=slapd state=started enabled=true
+

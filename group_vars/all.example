@@ -1,0 +1,9 @@
+---
+# Admin ldap user
+ldap_admin_user: admin
+
+# Plaintext LDAP password for config files
+ldap_pass: "password"
+
+# ldap password for admin user.  Generate using slappasswd -h {ssha} -s password, default below is admin
+ldap_pwd_hash: "{SSHA}abc123"

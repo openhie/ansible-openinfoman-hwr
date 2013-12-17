@@ -1,0 +1,10 @@
+---
+- name: Setup server
+  hosts: servers
+  user: root
+
+  roles:
+    - common
+    - custom-schema
+    - slapd-data
+    - webservices
