@@ -7,10 +7,10 @@
   notify: restart apache
 
 - name: Insert ldap password in test.php
-  copy: src=test.php dest=/opt/rhea-pr/webservices force=yes
+  template: src=test.php dest=/opt/rhea-pr/webservices force=yes
 
 - name: Insert ldap password in epid index.php
-  copy: src=epid-index.php dest=/opt/rhea-pr/webservices/lookupbyid/epid/index.php force=yes
+  template: src=epid-index.php dest=/opt/rhea-pr/webservices/lookupbyid/epid/index.php force=yes
 
 - name: Insert ldap password in nid index.php
-  copy: src=nid-index.php dest=/opt/rhea-pr/webservices/lookupbyid/nid/index.php force=yes
+  template: src=nid-index.php dest=/opt/rhea-pr/webservices/lookupbyid/nid/index.php force=yes
