@@ -8,7 +8,7 @@ Ansible playbook for deploying the provider registry component of the [OpenHIE](
 * Sets up a test databse.
 
 ## Requirements
-* Ansible **1.3+** installed on client.
+* Ansible **1.2+** installed on client.
 * Debian based distro installed on target machine (tested with Ubuntu 12.04 LTS).
 * root username/password on target machine, ssh installed and running.
 * **If you do not having the required python packages uncomment the `# - bootstrap` line in the `site.yml` file.**
