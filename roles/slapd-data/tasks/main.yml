@@ -7,7 +7,7 @@
   ignore_errors: yes
 
 - name: Copy admin pwd ldif
-  copy: src=admin_pass.ldif dest=/opt/rhea-pr/ldap/ owner=openldap group=openldap force=yes
+  template: src=admin_pass.ldif dest=/opt/rhea-pr/ldap/ owner=openldap group=openldap force=yes
 
 - name: Load ldap user data
   command: slapadd -l /opt/rhea-pr/ldap/admin_pass.ldif

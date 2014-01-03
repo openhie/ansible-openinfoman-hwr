@@ -7,3 +7,6 @@ ldap_pass: "password"
 
 # ldap password for admin user.  Generate using slappasswd -h {ssha} -s password
 ldap_pwd_hash: "{SSHA}abc123"
+
+# Set hostname (Fully qualified domain name)
+fqdn: server01.example.com

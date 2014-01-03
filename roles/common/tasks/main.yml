@@ -6,4 +6,8 @@
     - slapd
     - ldap-utils
     - phpldapadmin
+- name: Set hostname
+  hostname: name={{ fqdn }}
 
+- name: set hostname in /etc/hosts
+  lineinfile: line="127.0.1.1 {{ fqdn }}" dest=/etc/hosts state=present backup=yes
