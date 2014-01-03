@@ -4,6 +4,7 @@
   user: root
 
   roles:
+#    - bootstrap
     - common
     - custom-schema
     - slapd-data
