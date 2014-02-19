@@ -3,10 +3,7 @@
 ldap_admin_user: admin
 
 # Plaintext LDAP password for config files
-ldap_pass: "password"
+ldap_pass: "admin"
 
-# ldap password for admin user.  Generate using slappasswd -h {ssha} -s password
-ldap_pwd_hash: "{SSHA}abc123"
-
-# Set hostname (Fully qualified domain name)
+#Fully qualified domain name of server
 fqdn: server01.example.com
