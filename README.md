@@ -14,7 +14,7 @@ Ansible playbook for deploying the provider registry component of the [OpenHIE](
 * **If you do not having the required python packages uncomment the `# - bootstrap` line in the `site.yml` file.**
 
 ## Vars and setup
-You will need to copy `group_vars/all.example` to `group_vars/all` then edit the variables in`group_vars/all`. Make sure to generate the LDAP password hash.
+You will need to copy `group_vars/all.example` to `group_vars/all` then edit the variables in`group_vars/all`.
 
 Also copy `hosts.example` to `hosts` and enter the ip or hostname of your server in place of the ip.
 
