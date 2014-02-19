@@ -2,5 +2,5 @@ dn: cn=admin, dc=moh,dc=gov,dc=rw
 objectClass: simpleSecurityObject
 objectClass: organizationalRole
 cn: {{ ldap_admin_user }}
-userPassword:  {{ ldap_pwd_hash }}
+userPassword:  {{ ldap_pwd_hash.stdout }}
 description: LDAP administrator

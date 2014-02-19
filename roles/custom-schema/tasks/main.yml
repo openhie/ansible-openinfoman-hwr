@@ -9,7 +9,7 @@
   service: name=slapd state=stopped
 
 - name: Generate the root password for ldap
-  shell: slappasswd -s {{ ldap_pass }}
+  command: slappasswd -s {{ ldap_pass }}
   register: ldap_pwd_hash
 
 - name: Copy provider.schema
