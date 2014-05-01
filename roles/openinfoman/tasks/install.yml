@@ -1,0 +1,35 @@
+---
+- name: Install required pacakges
+  apt: name={{ item }} state=installed update_cache=yes
+  with_items:
+    - openjdk-7-jre-headless
+    - git
+    - unzip
+
+- name: Get latest BaseX snapshot
+  get_url: url=http://files.basex.org/releases/BaseX-latest.zip dest=/tmp
+
+- name: Unzip BaseX
+  command: creates=/opt/basex unzip /tmp/BaseX-latest.zip -d /opt/
+
+- name: Download openinfoman sources
+  git: repo=https://github.com/openhie/openinfoman.git dest=/opt/openinfoman
+
+- name: Download openinfoman-hwr sources
+  git: repo=https://github.com/openhie/openinfoman-hwr.git dest=/opt/openinfoman-hwr
+
+- name: Link Openinfoman libs to basex
+  shell: "ln -sf /opt/openinfoman/repo/* /opt/basex/repo/; ln -sf /opt/openinfoman-hwr/repo/* /opt/basex/repo/;"
+
+- name: Create the XML DB
+  command: /opt/basex/bin/basex -Vc "CREATE DATABASE provider_directory"
+
+- name: Link Administrative Interface
+  shell: "ln -sf /opt/openinfoman/webapp/*xqm /opt/basex/webapp/; ln -sf /opt/openinfoman/webapp/static/* /opt/basex/webapp/static/;"
+
+- name: create basex user
+  user: name=basex state=present createhome=no shell=/bin/sh system=yes
+  notify: lock user
+
+- name: install basex service
+  template: src=basex dest=/etc/init.d/basex mode=0755 owner=root group=root

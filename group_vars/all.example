@@ -1,9 +1,1 @@
 ---
-# Admin ldap user
-ldap_admin_user: admin
-
-# Plaintext LDAP password for config files
-ldap_pass: "admin"
-
-#Fully qualified domain name of server
-fqdn: server01.example.com

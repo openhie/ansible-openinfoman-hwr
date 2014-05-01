@@ -1,0 +1,18 @@
+---
+# Vars used for soft links
+
+- name: Create data and query directories
+  file: path={{ item }} state=directory owner={{ user }} group={{ user }}
+  with_items:
+    - /opt/basex/resources/stored_query_definitions
+    - /opt/basex/resources/shared_value_sets
+    - /opt/basex/resources/service_directories
+    - /opt/basex/resources/test_docs
+    - /opt/basex/resources/stored_updating_query_definitions
+
+# ugh. using shell otherwise ansible doesnt understand *
+- name: link openinfoman data
+  shell: "ln -sf /opt/openinfoman/resources/stored_query_definitions/* /opt/basex/resources/stored_query_definitions/; ln -sf /opt/openinfoman-pr/resources/stored_query_definitions/* /opt/basex/resources/stored_query_definitions/; ln -sf /opt/openinfoman/resources/shared_value_sets/* /opt/basex/resources/shared_value_sets/; ln -sf /opt/openinfoman/resources/service_directories/* /opt/basex/resources/service_directories/; ln -sf /opt/openinfoman/resources/test_docs/* /opt/basex/resources/test_docs; ln -sf /opt/openinfoman-pr/resources/stored_updating_query_definitions/* /opt/basex/resources/stored_updating_query_definitions;"
+
+- name: link schemas and stylesheets
+  shell: "ln-sf /opt/openinfoman/resources/SVS.xsd /opt/basex/resources/; ln -sf /opt/openinfoman/resources/CSD.xsd /opt/basex/resources/; ln -sf  /opt/openinfoman/resources/doc_careServiceFunctions.xsl /opt/basex/resources/;"
