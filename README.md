@@ -1,11 +1,10 @@
-playbook-ohie-pr
+playbook-ohie-hwr
 ================
 
-Ansible playbook for deploying the provider registry component of the [OpenHIE](http://ohie.org) stack.
+Ansible playbook for deploying the Health Worker Registry component of the [OpenHIE](http://ohie.org) stack.
 
 ## What it does
-* Installs ldap, and apache2.
-* Sets up a test databse.
+* Installs openinfoman and openinfoman-hwr and their dependencies.
 
 ## Requirements
 * Ansible **1.2+** installed on client.
@@ -27,4 +26,4 @@ Drop the -k if you are logging in with a public/private key.
 
 `ansible-playbook -i hosts site.yml`
 
-After this is complete point your browser to http://ip_or_hostname/webservices/lookupbyid/epid/?id_type=NID&id_number=6223158.  If you get a number back then the REST service is working correctly.
+After this is complete point your browser to http://ip_or_hostname/openhie-hwr. It should prompt you to run the upgrade script, and enter the password you specified in the `group_vars/all` file.
