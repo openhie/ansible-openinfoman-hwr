@@ -20,4 +20,9 @@
 - name: insert config for openhie-pr
   template: src=config.values.php dest=/opt/ihris/openhie-pr/sites/basex/pages/local/config.values.php
 
+- name: set proper permissions for apache2
+  file: path=/opt/ihris group=www-data owner=www-data recurse=yes state=directory
+
+- name: Make available under apache
+  shell: "ln -sf /opt/ihris/openhie-pr/sites/basex/pages /var/www/openhie-hwr"
 

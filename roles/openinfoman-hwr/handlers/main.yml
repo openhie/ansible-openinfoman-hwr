@@ -1,3 +1,6 @@
 ---
 - name: restart mysql
   service: name=mysql state=restarted enabled=yes
+
+- name: restart apache2
+  service: name=apache2 state=restarted enabled=yes

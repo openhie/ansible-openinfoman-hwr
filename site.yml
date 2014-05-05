@@ -6,4 +6,4 @@
   roles:
 #    - bootstrap
      - openinfoman
-#     - openinfoman-hwr
+     - openinfoman-hwr

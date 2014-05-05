@@ -13,7 +13,7 @@ import module namespace request = "http://exquery.org/ns/request";
 declare variable $csd_webconf:db :=  'provider_directory';
 
 (:BASE URL for openinforman. Overwrite this if you are proxying the openinfoman.   :)
-declare variable $csd_webconf:baseurl := "http://107.170.155.195:8984/";
+declare variable $csd_webconf:baseurl := "http://{{ ansible_eth0.ipv4.address }}:8984/";
 
 declare variable $csd_webconf:remote_services :=
 <serviceDirectoryLibrary>
