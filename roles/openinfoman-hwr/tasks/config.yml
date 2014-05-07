@@ -26,3 +26,6 @@
 - name: Make available under apache
   shell: "ln -sf /opt/ihris/openhie-pr/sites/basex/pages /var/www/openhie-hwr"
 
+- name: Complete ihris install
+  shell: "php /opt/ihris/openhie-pr/sites/basex/pages/index.php --update=1; php /opt/ihris/openhie-pr/sites/basex/pages/index.php --update=1;"
+  notify: restart apache2
