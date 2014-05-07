@@ -1,4 +1,9 @@
 ---
+# Service config
+- name: Insert php-apc config
+  template: src=apc.ini dest=/etc/php5/conf.d/apc.ini owner=root group=root mode=0744
+  notify: restart apache2
+
 # DB config
 - name: set log_bin_trust_function_creators in my.cnf
   lineinfile: dest=/etc/mysql/my.cnf state=present regexp=^log_bin_trust_function_creators= line=log_bin_trust_function_creators=1
