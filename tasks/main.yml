@@ -74,8 +74,8 @@
   notify: lock user
 
 - name: Install basex service
-  template: src=basex
-            dest=/etc/init.d/basex.j2
+  template: src=basex.j2
+            dest=/etc/init.d/basex
             mode=0755
             owner=root
             group=root
