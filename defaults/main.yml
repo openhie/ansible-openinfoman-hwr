@@ -1,5 +1,5 @@
 ---
-# Directory basex folder will be installed to
+# Directory basex folder will be installed to (will create basex subdirectory inside here)
 basex_dir: /opt
 # Directory openeinfo man will be installed to
 openinfoman_dir: /opt/openinfoman
@@ -15,6 +15,7 @@ basex_user: basex
 
 # Databse config
 openinfoman_db_root_pwd: openinfomandbroot
+# mysql user pwd for user: ihris
 openinfoman_db_ihris_pwd: openinfmandbihris
 
 # Add demo data after install and config
