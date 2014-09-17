@@ -138,7 +138,7 @@
               state=present
 
 - name: Create the XML DB
-  command: {{basex_dir}}/basex/bin/basex -Vc "CREATE DATABASE provider_directory"
+  command: '{{basex_dir}}/basex/bin/basex -Vc "CREATE DATABASE provider_directory"'
 
 - name: Link Openinfoman libs to basex
   shell: "ln -sf {{openinfoman_dir}}/repo/* {{basex_dir}}/basex/repo/; ln -sf {{openinfoman_hwr_dir}}/repo/* {{basex_dir}}/basex/repo/;"
