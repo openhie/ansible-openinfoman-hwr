@@ -1,6 +1,0 @@
----
-# Mysql root pasword
-mysqlrootpwd: password
-
-# Mysql user password (user=ihris)
-mysqluserpwd: userpassword

@@ -1,9 +1,0 @@
----
-# Tasks that deal with installing openinfoman
-- include: install.yml  user=basex
-
-# Tasks that configure openinfoman
-- include: config.yml user=basex
-
-# Add sample data and queries
-- include: data.yml user=basex

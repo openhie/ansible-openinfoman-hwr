@@ -1,9 +1,0 @@
----
-- name: Setup server
-  hosts: servers
-  user: root
-
-  roles:
-#    - bootstrap
-     - openinfoman
-     - openinfoman-hwr

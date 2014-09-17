@@ -1,0 +1,9 @@
+- name: Deploy openinfoman from archive
+  unarchive: copy=yes
+             dest={{openeinfoman_dir}}
+             src={{openinfoman_archive_loc}}
+
+- name: Deploy openinfoman-hwr from archive
+  unarchive: copy=yes
+             dest={{openeinfoman_hwr_dir}}
+             src={{openinfoman_hwr_archive_loc}}

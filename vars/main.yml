@@ -1,0 +1,4 @@
+---
+# Default service names
+mysql_service_name: mysqld
+apache_service_name: apache

@@ -1,0 +1,19 @@
+---
+# Vars used for soft links
+
+- name: Create data and query directories
+  file: path={{item}} state=directory
+        owner={{basex_user}}
+        group={{basex_user}}
+  with_items:
+    - {{basex_dir}}/basex/resources/stored_query_definitions
+    - {{basex_dir}}/basex/resources/shared_value_sets
+    - {{basex_dir}}/basex/resources/service_directories
+    - {{basex_dir}}/basex/resources/test_docs
+    - {{basex_dir}}/basex/resources/stored_updating_query_definitions
+
+- name: Link openinfoman data
+  shell: "ln -sf {{openinfoman_dir}}/resources/stored_query_definitions/* {{basex_dir}}/basex/resources/stored_query_definitions/; ln -sf {{openinfoman_pr_dir}}/resources/stored_query_definitions/* {{basex_dir}}/basex/resources/stored_query_definitions/; ln -sf {{openinfoman_dir}}/resources/shared_value_sets/* {{basex_dir}}/basex/resources/shared_value_sets/; ln -sf {{openinfoman_dir}}/resources/service_directories/* {{basex_dir}}/basex/resources/service_directories/; ln -sf {{openinfoman_dir}}/resources/test_docs/* {{basex_dir}}/basex/resources/test_docs; ln -sf {{openinfoman_pr_dir}}/resources/stored_updating_query_definitions/* {{basex_dir}}/basex/resources/stored_updating_query_definitions;"
+
+- name: Link schemas and stylesheets
+  shell: "ln-sf {{openinfoman_dir}}/resources/SVS.xsd {{basex_dir}}/basex/resources/; ln -sf {{openinfoman_dir}}/resources/CSD.xsd {{basex_dir}}/basex/resources/; ln -sf  {{openinfoman_dir}}/resources/doc_careServiceFunctions.xsl {{basex_dir}}/basex/resources/;"

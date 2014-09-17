@@ -1,8 +1,0 @@
----
-# Install tasks
-- include: install.yml
-
-# Config Tasks
-- include: config.yml
-
-

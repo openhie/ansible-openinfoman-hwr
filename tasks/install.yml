@@ -1,0 +1,7 @@
+- name: Install latest openinfoman from github
+  git: repo=https://github.com/openhie/openinfoman.git
+       dest={{openinfoman_dir}}
+
+- name: Install latest openinfoman-hwr from github
+  git: repo=https://github.com/openhie/openinfoman-hwr.git
+       dest={{openinfoman_hwr_dir}}

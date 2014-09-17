@@ -1,6 +1,0 @@
----
-- name: restart basex
-  service: name=basex state=restarted enabled=true
-
-- name: lock user
-  command: passwd -l basex
