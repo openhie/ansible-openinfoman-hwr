@@ -5,6 +5,9 @@
    - "../vars/{{ ansible_os_family }}.yml"
    - "../vars/default.yml"
 
+- include: cleanup.yml
+  when: openinfoman_deploy
+
 # Install required packages
 - name: Install required pacakges(Debian)
   apt: name={{item}}
@@ -155,6 +158,7 @@
         owner=www-data
         recurse=yes
         state=directory
+  notify: restart apache2
 
 - name: Set basex permissions
   file: path={{item}} 
@@ -165,6 +169,7 @@
     - "{{basex_dir}}/basex"
     - "{{openinfoman_dir}}"
     - "{{openinfoman_hwr_dir}}"
+  notify: restart basex
 
 - include: data.yml
   when: openinfoman_demo_data
