@@ -147,7 +147,7 @@
   shell: "ln -sf {{openinfoman_dir}}/webapp/*xqm {{basex_dir}}/basex/webapp/; ln -sf {{openinfoman_dir}}/webapp/static/* {{basex_dir}}/basex/webapp/static/;"
 
 - name: Make available under apache
-  shell: "ln -sf {{ihris_dir}}/openhie-pr/sites/basex/pages /var/www/openhie-hwr"
+  shell: "ln -sf {{ihris_dir}}/openhie-pr/sites/basex/pages /var/www/html/openhie-hwr"
 
 - name: Set proper permissions for apache
   file: path={{ihris_dir}}
