@@ -101,7 +101,7 @@
 
 - name: Insert php-apc config
   template: src=apc.ini.j2
-            dest=/etc/php5/conf.d/apc.ini
+            dest=/etc/php5/mods-available/apcu.ini
             owner=root
             group=root
             mode=0744
