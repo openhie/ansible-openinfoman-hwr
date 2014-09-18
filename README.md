@@ -1,22 +1,45 @@
-Role Name
+ansible-openinfoman-hwr
 =========
 
-A brief description of the role goes here.
+Installs [openinfoman](https://github.com/openhie/openinfoman) and [openinfoman-hwr](https://github.com/openhie/openinfoman-hwr).
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Works best with Ubunut 14.04
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+    # Directory basex folder will be installed to (will create basex subdirectory inside here)
+    basex_dir: /opt
+    # Directory openeinfo man will be installed to
+    openinfoman_dir: /opt/openinfoman
+    # Directory openinfoman-hwr will be installed to
+    openinfoman_hwr_dir: /opt/openinfoman-hwr
+    # Directory openinfoman-pr is installed to
+    openinfoman_pr_dir: /opt/openinfoman-pr
+    # Directory iHris will be installed to
+    ihris_dir: /opt/ihris
 
-Dependencies
-------------
+    # User that will run basex
+    basex_user: basex
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+    # Databse config
+    openinfoman_db_root_pwd: openinfomandbroot
+    # mysql user pwd for user: ihris
+    openinfoman_db_ihris_pwd: openinfmandbihris
+
+    # Add demo data after install and config
+    openinfoman_demo_data: true
+
+    # Deploy openinfoman (you probably don't want this)
+    openinfoman_deploy: false
+    # Archive of openinfoman to deploy if above is true
+    openinfoman_archive_loc:
+    # Archive of openinfoman-hwr to deploy
+    openinfoman_hwr_archive_loc:
+
 
 Example Playbook
 ----------------
@@ -25,14 +48,18 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - ansible-openinfoman-hwr
+
+      vars:
+        openinfoman_db_root_pwd: password
+	openinfoman_db_ihris_pwd: notpassword
 
 License
 -------
 
-BSD
+Apache v2
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Ryan Yates
