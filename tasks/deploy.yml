@@ -1,11 +1,10 @@
 # Make sure folders exist to deploy to
-- name: Create {{openinfoman_dir}}
-  file: path={{openinfoman_dir}}
+- name: Create deploy directories
+  file: path={{item}}
         state=directory
-
-- name: Create {{openinfoman_hwr_dir}}
-  file: path={{openinfoman_hwr_dir}}
-        state=directory
+  with_items:
+   - "{{openinfoman_dir}}"
+   - "{{openinfoman_hwr_dir}}"
 
 - name: Deploy openinfoman from archive
   unarchive: copy=yes
