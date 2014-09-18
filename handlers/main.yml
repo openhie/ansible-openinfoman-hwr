@@ -9,4 +9,4 @@
   service: name={{mysql_service_name}} state=restarted
 
 - name: lock user
-  command: passwd -l basex
+  command: passwd -l {{basex_user}}
