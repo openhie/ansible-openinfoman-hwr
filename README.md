@@ -6,7 +6,7 @@ Installs [openinfoman](https://github.com/openhie/openinfoman) and [openinfoman-
 Requirements
 ------------
 
-Works best with Ubunut 14.04
+Works best with Ubuntu 14.04
 
 Role Variables
 --------------
@@ -44,7 +44,6 @@ Role Variables
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
     - hosts: servers
       roles:
@@ -53,6 +52,7 @@ Including an example of how to use your role (for instance, with variables passe
       vars:
         openinfoman_db_root_pwd: password
 	openinfoman_db_ihris_pwd: notpassword
+
 
 License
 -------
