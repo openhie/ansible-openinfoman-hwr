@@ -46,6 +46,10 @@
              src=/tmp/BaseX-latest.zip
              dest={{basex_dir}}
 
+- name: Create .basexhome
+  file: path={{basex_dir}}/.basexhome
+        state=present
+
 - name: Make iHRIS dir
   file: state=directory
         path={{ihris_dir}}
