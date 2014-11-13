@@ -47,8 +47,8 @@
              dest={{basex_dir}}
 
 - name: Create .basexhome
-  file: path={{basex_dir}}/.basexhome
-        state=file
+  file: path={{basex_dir}}/basex/.basexhome
+        state=touch
 
 - name: Make iHRIS dir
   file: state=directory
