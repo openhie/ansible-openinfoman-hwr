@@ -5,8 +5,6 @@ basex_dir: /opt
 openinfoman_dir: /opt/openinfoman
 # Directory openinfoman-hwr will be installed to
 openinfoman_hwr_dir: /opt/openinfoman-hwr
-# Directory openinfoman-pr is installed to
-openinfoman_pr_dir: /opt/openinfoman-pr
 # Directory iHris will be installed to
 ihris_dir: /opt/ihris
 
@@ -16,7 +14,7 @@ basex_user: basex
 # Databse config
 openinfoman_db_root_pwd: openinfomandbroot
 # mysql user pwd for user: ihris
-openinfoman_db_ihris_pwd: openinfmandbihris
+openinfoman_db_ihris_pwd: openinfomandbihris
 
 # Add demo data after install and config
 openinfoman_demo_data: true
