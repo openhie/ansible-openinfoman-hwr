@@ -46,6 +46,9 @@
              src=/tmp/BaseX-latest.zip
              dest={{basex_dir}}
 
+- name: Link basex in PATH
+  shell: ln -sf {{basex_dir}}/basex/bin/basex /usr/local/bin/basex
+
 - name: Create .basexhome
   file: path={{basex_dir}}/basex/.basexhome
         state=touch
@@ -144,14 +147,28 @@
               priv=csd_hwr.*:ALL
               state=present
 
+- name: Link Openinfoman libs to basex repo
+  shell: chdir={{openinfoman_dir}}/repo basex -Vc "{{item}}"
+  with_items:
+    - "REPO INSTALL http://files.basex.org/modules/expath/functx-1.0.xar"
+    - "repo install csd_base_library.xqm"
+    - "repo install csd_base_library_updating.xqm"
+    - "repo install csd_base_stored_queries.xqm"
+    - "repo install csd_document_manager.xqm"
+    - "repo install csd_load_sample_directories.xqm"
+    - "repo install csd_query_updated_services.xqm"
+    - "repo install csd_poll_service_directories.xqm"
+    - "repo install csd_local_services_cache.xqm"
+    - "repo install csd_merge_cached_services.xqm"
+    - "repo install csr_processor.xqm"
+    - "repo install svs_load_shared_value_sets.xqm"
+    - "repo install csd_webapp_config.xqm"
+
 - name: Create the XML DB
   command: '{{basex_dir}}/basex/bin/basex -Vc "CREATE DATABASE provider_directory"'
 
-- name: Link Openinfoman libs to basex
-  shell: "ln -sf {{openinfoman_dir}}/repo/* {{basex_dir}}/basex/repo/; ln -sf {{openinfoman_hwr_dir}}/repo/* {{basex_dir}}/basex/repo/;"
-
 - name: Link Administrative Interface
-  shell: "ln -sf {{openinfoman_dir}}/webapp/*xqm {{basex_dir}}/basex/webapp/; ln -sf {{openinfoman_dir}}/webapp/static/* {{basex_dir}}/basex/webapp/static/;"
+  shell: "ln -sf {{openinfoman_dir}}/webapp/*xqm {{basex_dir}}/basex/webapp/; ln -sf {{openinfoman_dir}}/webapp/static/* {{basex_dir}}/basex/webapp/dba/files/;"
 
 - name: Make available under apache
   shell: "ln -sf {{ihris_dir}}/openhie-pr/sites/basex/pages /var/www/html/openhie-hwr"
