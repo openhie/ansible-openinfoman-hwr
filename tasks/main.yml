@@ -53,6 +53,13 @@
   file: path={{basex_dir}}/basex/.basexhome
         state=touch
 
+- name: Create static directory
+  file: path={{basex_dir}}/basex/webapp/static
+        state=directory
+
+- name: Link files to static
+  shell: "ln -sf {{basex_dir}}/basex/webapp/dba/files/* {{basex_dir}}/basex/webapp/static/"
+
 - name: Make iHRIS dir
   file: state=directory
         path={{ihris_dir}}
@@ -168,7 +175,7 @@
   command: '{{basex_dir}}/basex/bin/basex -Vc "CREATE DATABASE provider_directory"'
 
 - name: Link Administrative Interface
-  shell: "ln -sf {{openinfoman_dir}}/webapp/*xqm {{basex_dir}}/basex/webapp/; ln -sf {{openinfoman_dir}}/webapp/static/* {{basex_dir}}/basex/webapp/dba/files/;"
+  shell: "ln -sf {{openinfoman_dir}}/webapp/*xqm {{basex_dir}}/basex/webapp/; ln -sf {{openinfoman_dir}}/webapp/static/* {{basex_dir}}/basex/webapp/static/;"
 
 - name: Make available under apache
   shell: "ln -sf {{ihris_dir}}/openhie-pr/sites/basex/pages /var/www/html/openhie-hwr"
