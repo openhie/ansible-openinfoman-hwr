@@ -180,6 +180,9 @@
 - name: Make available under apache
   shell: "ln -sf {{ihris_dir}}/openhie-pr/sites/basex/pages /var/www/html/openhie-hwr"
 
+- include: data.yml
+  when: openinfoman_demo_data
+
 - name: Set proper permissions for apache
   file: path={{ihris_dir}}
         group=www-data
@@ -199,8 +202,6 @@
     - "{{openinfoman_hwr_dir}}"
   notify: restart basex
 
-- include: data.yml
-  when: openinfoman_demo_data
 
 # Flush handlers before updating
 - meta: flush_handlers
