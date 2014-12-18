@@ -5,6 +5,10 @@ basex_dir: /opt
 openinfoman_dir: /opt/openinfoman
 # Directory openinfoman-hwr will be installed to
 openinfoman_hwr_dir: /opt/openinfoman-hwr
+# Directory openinfoman-dhis will be installed to
+openinfoman_dhis_dir: /opt/openinfoman-dhis
+# Driectory openinfoman-csv will be installed to
+openinfoman_csv_dir: /opt/openinfoman-csv
 # Directory iHris will be installed to
 ihris_dir: /opt/ihris
 
