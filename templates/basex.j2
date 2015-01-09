@@ -14,7 +14,7 @@ case "$1" in
   # Start command
   start)
     echo "Starting $APP"
-    cd BIN_HOME/bin
+    cd $BIN_HOME/bin
     /bin/su -m $USER -c "$BIN_HOME/bin/basexhttp &> /dev/null"
     ;;
   # Stop command
