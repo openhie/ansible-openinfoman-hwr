@@ -14,7 +14,7 @@ ihris_dir: /opt/ihris
 
 # User that will run basex
 basex_user: basex
-
+basex_download_url: "http://files.basex.org/releases/8.0/BaseX80.zip"
 # Databse config
 openinfoman_db_root_pwd: openinfomandbroot
 # mysql user pwd for user: ihris

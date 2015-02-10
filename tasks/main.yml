@@ -37,13 +37,13 @@
   when: ansible_os_family == 'Debian'
 
 - name: Get latest BaseX snapshot
-  get_url: url=http://files.basex.org/releases/BaseX-latest.zip
+  get_url: url={{basex_download_url}}
            dest=/tmp
 
 - name: Unzip BaseX
   unarchive: creates={{basex_dir}}/basex
              copy=no 
-             src=/tmp/BaseX-latest.zip
+             src=/tmp/BaseX80.zip
              dest={{basex_dir}}
 
 - name: Link basex in PATH
