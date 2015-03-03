@@ -29,3 +29,9 @@ openinfoman_deploy: false
 openinfoman_archive_loc:
 # Archive of openinfoman-hwr to deploy
 openinfoman_hwr_archive_loc:
+
+# Git branch/tag of openinfoman if not deploying
+openinfoman_git_branch: 1.0.22
+# Git branch/tag of openinfoman-hwr if not deploying
+openinfoman_hwr_git_branch: 1.0.5
+
