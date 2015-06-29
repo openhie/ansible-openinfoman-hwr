@@ -1,9 +1,40 @@
-- name: Install latest openinfoman from github
-  git: repo=https://github.com/openhie/openinfoman.git
-       dest={{openinfoman_dir}}
-       version={{openinfoman_git_branch}}
+# Install required packages
+- name: Install required pacakges(Debian)
+  apt: name={{item}}
+       state=installed
+       update_cache=yes
+       cache_valid_time=86400
+  with_items:
+   - openjdk-7-jre-headless
+   - git
+   - unzip
+   - software-properties-common
+  when: ansible_os_family == 'Debian'
 
-- name: Install latest openinfoman-hwr from github
-  git: repo=https://github.com/openhie/openinfoman-hwr.git
-       dest={{openinfoman_hwr_dir}}
-       version={{openinfoman_hwr_git_branch}}
+- name: Install OpenHIE PPA
+  apt_repository: repo='ppa:openhie/release'
+                  update_cache=yes
+                  state=present
+
+- name: Install openinfoman
+  apt: name={{item}}
+       state=installed
+       update_cache=yes
+       cache_valid_time=86400
+  with_items:
+    - openinfoman
+    - openinfoman-ilr
+    - openinfoman-dhis
+    - openinfoman-hwr
+  when: openinfoman_install == true
+
+- name: Install HWR
+  apt: name={{item}}
+       state=installed
+       update_cache=yes
+       cache_valid_time=86400
+  with_items:
+    - openinfoman-hwr
+    - openhie-pr-site
+    - openhie-pr
+  when: openinfoman_hwr_install == true
