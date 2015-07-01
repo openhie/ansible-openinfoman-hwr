@@ -1,31 +1,10 @@
 ---
-# Directory basex folder will be installed to (will create basex subdirectory inside here)
-basex_dir: /opt
-# Directory openeinfo man will be installed to
-openinfoman_dir: /opt/openinfoman
-# Directory openinfoman-hwr will be installed to
-openinfoman_hwr_dir: /opt/openinfoman-hwr
-# Directory openinfoman-dhis will be installed to
-openinfoman_dhis_dir: /opt/openinfoman-dhis
-# Driectory openinfoman-csv will be installed to
-openinfoman_csv_dir: /opt/openinfoman-csv
-# Directory iHris will be installed to
-ihris_dir: /opt/ihris
+# Install openinfoman
+openinfoman_install: true
+# Install ihris HWR
+openinfoman_hwr_install: true
 
-# User that will run basex
-basex_user: basex
-basex_download_url: "http://files.basex.org/releases/8.0/BaseX80.zip"
-# Databse config
-openinfoman_db_root_pwd: openinfomandbroot
-# mysql user pwd for user: ihris
-openinfoman_db_ihris_pwd: openinfomandbihris
 
-# Add demo data after install and config
-openinfoman_demo_data: true
-
-# Deploy openinfoman (you probably don't want this)
-openinfoman_deploy: false
-# Archive of openinfoman to deploy if above is true
-openinfoman_archive_loc:
-# Archive of openinfoman-hwr to deploy
-openinfoman_hwr_archive_loc:
+# Default install dirs
+openinfoman_dir: /var/lib/openinfoman
+ihris_dir: /var/lib/iHRIS
