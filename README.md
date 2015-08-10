@@ -15,6 +15,8 @@ Role Variables
 openinfoman_install: true
 # Install ihris HWR
 openinfoman_hwr_install: true
+# Openinfoman base url
+openinfoman_baseurl: "http://{{ansible_default_ipv4.address}}:8984/"
 
 
 # Default install dirs (Change only when using deploy)
